@@ -51,18 +51,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        print("[hsm511] MainActivity -> onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-        print("[hsm511] MainActivity -> onPause()")
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
-        print("[hsm511] MainActivity -> onDestroy()")
     }
 }
 
