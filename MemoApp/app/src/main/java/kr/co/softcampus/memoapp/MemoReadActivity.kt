@@ -3,6 +3,7 @@ package kr.co.softcampus.memoapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.core.graphics.createBitmap
 import kr.co.softcampus.memoapp.databinding.ActivityMemoReadBinding
@@ -40,7 +41,7 @@ class MemoReadActivity : AppCompatActivity() {
 
         // 글 번호 추철
         val memo_idx = intent.getIntExtra("memo_idx", 0)
-        
+
         // 쿼리 실행
         val args = arrayOf(memo_idx.toString())
         val c1 = helper.writableDatabase.rawQuery(sql, args)
@@ -66,11 +67,26 @@ class MemoReadActivity : AppCompatActivity() {
 
     }
 
+    // 툴바 메뉴 노출
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.read_menu, menu)
+        return true
+    }
+
+
     // 홈 버튼 누르기 할 때 뒤로가기 기능 추가
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
                 finish()
+            }
+            // 메뉴 수정
+            R.id.read_modify -> {
+
+            }
+            // 메뉴 삭제
+            R.id.read_delete -> {
+
             }
         }
         return super.onOptionsItemSelected(item)

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/read_modify"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="수정하기"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/read_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="삭제하기"
+        app:showAsAction="always" />
+</menu>
