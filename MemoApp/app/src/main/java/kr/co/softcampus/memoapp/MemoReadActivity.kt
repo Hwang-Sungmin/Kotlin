@@ -1,5 +1,6 @@
 package kr.co.softcampus.memoapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -82,6 +83,8 @@ class MemoReadActivity : AppCompatActivity() {
             }
             // 메뉴 수정
             R.id.read_modify -> {
+                val memoModifyIntent = Intent(this, MemoModifyActivity::class.java)
+                startActivity(memoModifyIntent)
 
             }
             // 메뉴 삭제
