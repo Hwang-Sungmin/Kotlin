@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.createBitmap
 import kr.co.softcampus.memoapp.databinding.ActivityMemoReadBinding
 
@@ -94,7 +95,35 @@ class MemoReadActivity : AppCompatActivity() {
             }
             // 메뉴 삭제
             R.id.read_delete -> {
+                // 다이얼로그 호출 후 메뉴 삭제
+                var builder = AlertDialog.Builder(this)
 
+                builder.setTitle("메모삭제")
+                builder.setMessage("메모를 삭제하겠습니까?")
+
+                builder.setPositiveButton("삭제") { dialogInterface, i ->
+                    // 데이터 베이스 오픈
+                    val helper = DBHelper(this)
+                    // 쿼리문
+                    val sql = """
+                        delete from MemoTable
+                        where memo_idx = ?
+                    """.trimIndent()
+
+                    // 글번호를 가져온다
+                    val memo_idx = intent.getIntExtra("memo_idx", 0)
+
+                    // 쿼리문 실행
+                    var args = arrayOf(memo_idx.toString())
+
+                    helper.writableDatabase.execSQL(sql, args)
+                    helper.writableDatabase.close()
+
+                    finish()
+                }
+                builder.setNegativeButton("취소", null)
+
+                builder.show()
             }
         }
         return super.onOptionsItemSelected(item)
